@@ -1,0 +1,22 @@
+{
+  "user": [
+    { 
+      "name":"ati",
+            "email":"a@tre.bon",
+            "phonenumber":"09118648663",
+            "password":"asd@Aqwer3",
+            "passwordconfirm":"asd@Aqwer3",
+            "gender":"0",
+            "id":"1"
+    },
+    {
+      "name": "atefeh masoumi",
+      "email": "t@gmail.com",
+      "phonenumber":"09118648663",
+            "password":"asd@Aqwer3",
+            "passwordconfirm":"asd@Aqwer3",
+            "gender":"1",
+      "id": 2
+    }
+  ]
+}
