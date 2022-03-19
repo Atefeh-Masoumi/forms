@@ -7,15 +7,17 @@
             "password":"asd@Aqwer3",
             "passwordconfirm":"asd@Aqwer3",
             "gender":"0",
-            "id":"1"
+            "nationality":"IR",
+            "id":"1",
+            "interests":[]
     },
     {
       "name": "atefeh masoumi",
       "email": "t@gmail.com",
       "phonenumber":"09118648663",
-            "password":"asd@Aqwer3",
-            "passwordconfirm":"asd@Aqwer3",
-            "gender":"1",
+      "password":"asd@Aqwer3",
+      "passwordconfirm":"asd@Aqwer3",
+      "gender":"1",
       "id": 2
     }
   ]

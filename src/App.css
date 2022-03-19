@@ -1,17 +1,20 @@
 .formtable {
   display: flex;
-  justify-content: center;
+  align-items: center;
   padding: 20px;
+  justify-content: center;
 }
 .form {
   margin: 5px;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .form div {
   padding: 2px;
   display: flex;
-  justify-content: space-between;
+
   align-items: center;
 }
 .form label {
@@ -37,4 +40,12 @@
 }
 input + label {
   margin: 5px;
+}
+.select {
+  margin: 5px;
+}
+.select select {
+  padding: 3px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
 }

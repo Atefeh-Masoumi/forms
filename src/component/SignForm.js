@@ -2,8 +2,25 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
+import CheckboxInput from '../comon/CheckboxInput';
 import Input from '../comon/Input';
+import RadioButton from '../comon/RadioButton';
+import SelectComponent from '../comon/SelectComponent';
 
+const CheckboxOption =[
+    {label:"normal", value:"normal"},
+    {label:"Premuim", value:"premium"},
+]
+const radioOption =[
+    {label:"male", value:"0"},
+    {label:"female", value:"1"},
+]
+const selectOption=[
+    {label:"select nationality...", value:""},
+    {label:"Iran", value:"IR"},
+    {label:"Germany", value:"Ger"},
+    {label:"USA", value:"Usa"},
+]
 const SignForm = () => {
  
     const[formValue, setformValue]=useState(null);
@@ -18,6 +35,9 @@ const SignForm = () => {
           ),
         passwordconfirm:Yup.string().required("password confirmation required").oneOf([Yup.ref('password'),null], 'Password must match'),
         gender:Yup.string().required("gender is required"),
+        nationality:Yup.string().required("this field is necessary"),
+        intersts:Yup.array().min(1).required("select one at least"),
+        terms:Yup.boolean().required().oneOf([true], "You must accept the terms and conditions"),
     });
    
 const initialValues={
@@ -27,6 +47,10 @@ const initialValues={
     password:"",
     passwordconfirm:"",
     gender:"",
+    nationality:"",
+    intersts:[],
+    terms:false,
+
 }
     useEffect(()=>{
         axios.get("http://localhost:3001/user/1").then(res=>setformValue(res.data)).catch(err=>console.log(err))
@@ -50,19 +74,13 @@ const initialValues={
                 <Input  formik={formik} name="password" label="Password" type='password'/>
                 <Input  formik={formik} name="passwordconfirm" label="Password Confirm" type='password'/>
                 
-                
+                <RadioButton formik={formik} radioOption={radioOption
+                } name="gender"/>
 
-                
-                
-                <div>
-                    <input type="radio" id="0" name="gender" value="0" onChange={formik.handleChange} checked={formik.values.gender==="0"}/>
-                    <label htmlFor="0">Male</label>
-                    <input type="radio" id="1" name="gender" value="1" onChange={formik.handleChange} checked={formik.values.gender==="1"}/>
-                    <label htmlFor="1">Female</label>
-                </div>
+                <SelectComponent selectOption={selectOption} formik={formik} name="nationality"/>
+                <CheckboxInput CheckboxOption={CheckboxOption} formik={formik} name="intersts"/>
                 <div id='button'>
-               
-                <button type="submit" disabled={!formik.isValid}>Submit</button>
+                    <button type="submit" disabled={!formik.isValid}>Submit</button>
                 </div>
                 
             </form>
