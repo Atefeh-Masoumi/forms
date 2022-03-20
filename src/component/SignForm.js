@@ -9,7 +9,7 @@ import SelectComponent from '../comon/SelectComponent';
 
 const CheckboxOption =[
     {label:"normal", value:"normal"},
-    {label:"Premuim", value:"premium"},
+    {label:"Premuim", value:"Premuim"},
 ]
 const radioOption =[
     {label:"male", value:"0"},
@@ -37,7 +37,7 @@ const SignForm = () => {
         gender:Yup.string().required("gender is required"),
         nationality:Yup.string().required("this field is necessary"),
         intersts:Yup.array().min(1).required("select one at least"),
-        terms:Yup.boolean().required().oneOf([true], "You must accept the terms and conditions"),
+        terms:Yup.boolean().required("terms must be accepted").oneOf([true], "You must accept the terms and conditions"),
     });
    
 const initialValues={
@@ -48,9 +48,13 @@ const initialValues={
     passwordconfirm:"",
     gender:"",
     nationality:"",
-    intersts:[],
+    interests:[],
     terms:false,
 
+}
+const onSubmit=(values)=>{
+    console.log(values);
+    axios.post("http://localhost:3001/user", values).then(res=>console.log(res.data)).catch(err=>console.log(err))
 }
     useEffect(()=>{
         axios.get("http://localhost:3001/user/1").then(res=>setformValue(res.data)).catch(err=>console.log(err))
@@ -60,9 +64,10 @@ const initialValues={
         validationSchema,   
         validateOnMount:true,   
         enableReinitialize:true,
+        onSubmit,
         
     })
-    console.log(formik.errors);
+    console.log(formik.values);
 
     return (  
         <div className="formtable">
@@ -74,11 +79,16 @@ const initialValues={
                 <Input  formik={formik} name="password" label="Password" type='password'/>
                 <Input  formik={formik} name="passwordconfirm" label="Password Confirm" type='password'/>
                 
-                <RadioButton formik={formik} radioOption={radioOption
-                } name="gender"/>
+                <RadioButton formik={formik} radioOption={radioOption} name="gender"/>
 
                 <SelectComponent selectOption={selectOption} formik={formik} name="nationality"/>
-                <CheckboxInput CheckboxOption={CheckboxOption} formik={formik} name="intersts"/>
+                <CheckboxInput CheckboxOption={CheckboxOption} formik={formik} name="interests"/>
+                
+                <input type="checkbox" id="terms" name="terms" value={true} onChange={formik.handleChange} checked={formik.values.terms} />
+                <label htmlFor="terms">Terms and Conditions</label>
+           
+                {formik.errors.terms && formik.touched.terms&&<div style={{color:"red"}}>{formik.errors.terms}</div>}
+          
                 <div id='button'>
                     <button type="submit" disabled={!formik.isValid}>Submit</button>
                 </div>

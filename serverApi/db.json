@@ -9,7 +9,8 @@
             "gender":"0",
             "nationality":"IR",
             "id":"1",
-            "interests":[]
+            "interests":["normal"],
+            "terms":false
     },
     {
       "name": "atefeh masoumi",
