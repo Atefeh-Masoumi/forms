@@ -36,7 +36,7 @@ const SignForm = () => {
         passwordconfirm:Yup.string().required("password confirmation required").oneOf([Yup.ref('password'),null], 'Password must match'),
         gender:Yup.string().required("gender is required"),
         nationality:Yup.string().required("this field is necessary"),
-        intersts:Yup.array().min(1).required("select one at least"),
+        interests:Yup.array().min(1).required("select one at least"),
         terms:Yup.boolean().required("terms must be accepted").oneOf([true], "You must accept the terms and conditions"),
     });
    

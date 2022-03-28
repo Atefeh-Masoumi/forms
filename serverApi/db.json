@@ -1,25 +1,41 @@
 {
   "user": [
-    { 
-      "name":"ati",
-            "email":"a@tre.bon",
-            "phonenumber":"09118648663",
-            "password":"asd@Aqwer3",
-            "passwordconfirm":"asd@Aqwer3",
-            "gender":"0",
-            "nationality":"IR",
-            "id":"1",
-            "interests":["normal"],
-            "terms":false
+    {
+      "name": "ati",
+      "email": "a@tre.bon",
+      "phonenumber": "09118648663",
+      "password": "asd@Aqwer3",
+      "passwordconfirm": "asd@Aqwer3",
+      "gender": "0",
+      "nationality": "IR",
+      "id": "3",
+      "interests": [
+        "normal"
+      ],
+      "terms": false
     },
     {
       "name": "atefeh masoumi",
       "email": "t@gmail.com",
-      "phonenumber":"09118648663",
-      "password":"asd@Aqwer3",
-      "passwordconfirm":"asd@Aqwer3",
-      "gender":"1",
+      "phonenumber": "09118648663",
+      "password": "asd@Aqwer3",
+      "passwordconfirm": "asd@Aqwer3",
+      "gender": "1",
       "id": 2
+    },
+    {
+      "name": "atife",
+      "email": "a@tre.bon",
+      "phonenumber": "09118648663",
+      "password": "asd@Aqwer3",
+      "passwordconfirm": "asd@Aqwer3",
+      "gender": "0",
+      "nationality": "IR",
+      "id": "1",
+      "interests": [
+        "normal"
+      ],
+      "terms": true
     }
   ]
 }
